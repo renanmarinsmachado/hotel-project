@@ -6,8 +6,21 @@
 	float: none;
 }
 
+.menu{
+	width: 1030px;
+	height: auto;
+	margin: auto;
+	float: none;
+	margin-bottom: -15px;
+}
+
 .footer{
 	margin-right: 10px;
 	font-size: 11px;
 	text-align: right;
+}
+
+body{
+	background-image: url("/images/background-opacity.jpg");
+	background-repeat: no-repeat;
 }

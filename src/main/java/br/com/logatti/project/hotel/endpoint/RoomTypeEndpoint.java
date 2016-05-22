@@ -11,7 +11,7 @@ import br.com.logatti.project.hotel.entity.RoomType;
 import br.com.logatti.project.hotel.service.RoomTypeService;
 
 @RestController
-@RequestMapping("/roomType")
+@RequestMapping("/ed/roomType")
 public class RoomTypeEndpoint {
 
 	@Autowired

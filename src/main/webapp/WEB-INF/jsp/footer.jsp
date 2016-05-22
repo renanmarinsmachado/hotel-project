@@ -9,6 +9,9 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 
+<spring:url value="/js/main.js" var="mainJs" />
+<script src="${mainJs}"></script>
+
 <div class="navbar-fixed-bottom">
 	<div class="panel panel-default">
 		<div class="panel-footer">

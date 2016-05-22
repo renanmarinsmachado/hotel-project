@@ -10,7 +10,13 @@
 						<%@ include file="form.jsp"%>
 					</div>
 					<div class="panel-heading label-create" style="cursor: pointer;">Criar</div>
-					<input type="hidden" id="value-create" value="0"/>
+					
+					<c:choose>
+					    <c:when test="${openCreate eq ''}">
+					       <c:set var="openCreate" value="0"/>
+					    </c:when>
+					</c:choose>
+					<input type="hidden" id="value-create" value="${openCreate}"/>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -30,10 +36,10 @@
 
 	$(document).ready(function() {
 
-		$('#example').DataTable({
+		$('#data-table').DataTable({
 			dom : "Bfrtip",
 			ajax : {
-				url : "http://localhost:8080/room",
+				url : "http://localhost:8080/ed/room",
 				type : 'GET',
 				dataSrc : ''
 			},
@@ -51,28 +57,22 @@
 			buttons : [
 
 			],
-			select : true
+			select : true,
+			searching: false
 		});
 		
 		$.ajax({
-	        url: "http://localhost:8080/roomType"
+	        url: "http://localhost:8080/ed/roomType"
 	    }).then(function(data) {
-	       for (i = 0; i < data.length; i++) { 
-	    	   $('#roomType').append('<option value="'+data[i].id+'">'+data[i].description+'</option>');
+	    	var selected = "";
+	       	for (i = 0; i < data.length; i++) { 
+	    	   	if(data[i].id == $("#roomTypeId").val()){
+	    	   		selected = "selected";
+	    	   	}else{
+	    	   		selected = "";
+	    	   	}
+	    	   	$('#roomType').append('<option value="'+data[i].id+'" '+selected+'>'+data[i].description+'</option>');
 	    	}
 	    });
-		
-		$(".body-create").hide();
-		$(".label-create").click(function(){
-			if($("#value-create").val() == 0){
-				$(".body-create").fadeIn(300);
-				$(".label-create").html("Cancelar");
-				$("#value-create").val(1);
-			}else{
-				$(".body-create").fadeOut(300);
-				$(".label-create").html("Criar");
-				$("#value-create").val(0);
-			}
-		});
 	});
 </script>

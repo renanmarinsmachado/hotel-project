@@ -30,3 +30,5 @@
 <div class="panel panel-default">
 	<div class="panel-body"><h1>Hotel Logatti</h1></div>
 </div>
+
+<div class="panel-heading menu"><%@ include file="/WEB-INF/jsp/menu.jsp"%></div>

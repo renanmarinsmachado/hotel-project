@@ -19,4 +19,8 @@ public class RoomService {
 	public void save(Room room){
 		roomRepository.save(room);
 	}
+	
+	public Room get(Long id){
+		return roomRepository.findOne(id);
+	}
 }
