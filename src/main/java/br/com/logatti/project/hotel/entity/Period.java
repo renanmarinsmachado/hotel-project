@@ -1,13 +1,14 @@
 package br.com.logatti.project.hotel.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Period {
@@ -16,16 +17,18 @@ public class Period {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Date entryDate;
+	private String entryDate;
 	
-	private Date endDate;
+	private String endDate;
 	
 	private Boolean paymentStatus;
 
-	@ManyToOne
+	@Fetch(FetchMode.JOIN)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Client client;
 	
-	@ManyToOne
+	@Fetch(FetchMode.JOIN)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Room room;
 
 	public Long getId() {
@@ -36,19 +39,19 @@ public class Period {
 		this.id = id;
 	}
 
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return entryDate;
 	}
 
-	public void setEntryDate(Date entryDate) {
+	public void setEntryDate(String entryDate) {
 		this.entryDate = entryDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

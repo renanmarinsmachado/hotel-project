@@ -12,17 +12,14 @@
 <spring:url value="/js/main.js" var="mainJs" />
 <script src="${mainJs}"></script>
 
-<div class="navbar-fixed-bottom">
-	<div class="panel panel-default">
-		<div class="panel-footer">
+<div id="footer">
 			<div class="footer">
 <!-- 				<div style="margin-right: 50px;"> -->
 					Desenvolvido por:
 <!-- 				</div>  -->
 				<br> Renan Marins Machado <br> Eitor Robinho
 			</div>
-		</div>
-	</div>
+</div>
 </div>
 </body>
 </html>

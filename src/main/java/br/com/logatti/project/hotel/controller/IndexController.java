@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 	
-	@RequestMapping("/index.html")
+	@RequestMapping("/index")
     public ModelAndView getListUsersView() {
         ModelMap model = new ModelMap();
         model.addAttribute("title", "Hotel Logatti");

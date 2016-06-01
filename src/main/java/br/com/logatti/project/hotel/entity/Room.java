@@ -21,6 +21,8 @@ public class Room {
 	private RoomType roomType;
 	
 	private Double diaryValue;
+	
+	private Boolean available;
 
 	public Long getId() {
 		return id;
@@ -61,10 +63,18 @@ public class Room {
 	public void setDiaryValue(Double diaryValue) {
 		this.diaryValue = diaryValue;
 	}
+	
+	public void setAvailable(Boolean available){
+		this.available = available;
+	}
+	
+	public Boolean isAvailable(){
+		return available;
+	}
 
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", name=" + name + ", description=" + description + ", roomType=" + roomType
-				+ ", diaryValue=" + diaryValue + "]";
+				+ ", diaryValue=" + diaryValue + ", available=" + available + "]";
 	}
 }

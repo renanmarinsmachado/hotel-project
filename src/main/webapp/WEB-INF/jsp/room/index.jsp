@@ -1,33 +1,34 @@
 <%@ include file="../header.jsp"%>
 
-<div class="row">
-	<div class="">
-		<div class="panel panel-success panel-hotel">
-			<div class="panel-heading">Gerenciamento de Quartos</div>
-			<div class="panel-body">
-				<div class="panel panel-success">
-					<div class="panel-body body-create">
-						<%@ include file="form.jsp"%>
+	<div id="content">
+		<div class="row">
+			<div class="panel panel-success panel-hotel">
+				<div class="panel-heading">Gerenciamento de Quartos</div>
+				<div class="panel-body">
+					<div class="panel panel-success">
+						<div class="panel-body body-create">
+							<%@ include file="form.jsp"%>
+						</div>
+						<div class="panel-heading label-create" style="cursor: pointer;">Criar</div>
+						
+						<c:choose>
+						    <c:when test="${openCreate eq ''}">
+						       <c:set var="openCreate" value="0"/>
+						    </c:when>
+						</c:choose>
+						<input type="hidden" id="value-create" value="${openCreate}"/>
 					</div>
-					<div class="panel-heading label-create" style="cursor: pointer;">Criar</div>
-					
-					<c:choose>
-					    <c:when test="${openCreate eq ''}">
-					       <c:set var="openCreate" value="0"/>
-					    </c:when>
-					</c:choose>
-					<input type="hidden" id="value-create" value="${openCreate}"/>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<%@ include file="datatable.jsp"%>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<%@ include file="datatable.jsp"%>
+						</div>
 					</div>
+	
 				</div>
-
 			</div>
 		</div>
 	</div>
-</div>
+
 
 <%@ include file="../footer.jsp"%>
 
@@ -36,10 +37,14 @@
 
 	$(document).ready(function() {
 
+		accordion();
+		edit();
+// 		remove();
+		
 		$('#data-table').DataTable({
 			dom : "Bfrtip",
 			ajax : {
-				url : "http://localhost:8080/ed/room",
+				url : $("#baseURL").val()+"/ed/room",
 				type : 'GET',
 				dataSrc : ''
 			},
@@ -62,7 +67,7 @@
 		});
 		
 		$.ajax({
-	        url: "http://localhost:8080/ed/roomType"
+	        url: $("#baseURL").val()+"/ed/roomType"
 	    }).then(function(data) {
 	    	var selected = "";
 	       	for (i = 0; i < data.length; i++) { 

@@ -23,4 +23,8 @@ public class RoomService {
 	public Room get(Long id){
 		return roomRepository.findOne(id);
 	}
+	
+	public void remove(Long id) {
+		roomRepository.delete(id);
+	}
 }

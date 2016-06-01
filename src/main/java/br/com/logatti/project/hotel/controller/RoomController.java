@@ -25,6 +25,11 @@ public class RoomController {
 	
 	@RequestMapping(value="/room", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("room") Room room) {
+		
+		if(room.getId() == null){
+			room.setAvailable(true);
+		}
+		
 		roomService.save(room);
 		
         return getList();
@@ -35,6 +40,12 @@ public class RoomController {
 		ModelMap model = init(1);
 		model.addAttribute("room", roomService.get(id));
         return new ModelAndView("room/index", model);		
+    }
+	
+	@RequestMapping(value="/roomRemove", method = RequestMethod.POST)
+    public ModelAndView remove(@RequestParam("idRemove") Long id) {
+		roomService.remove(id);
+        return getList();		
     }
 	
 	private ModelMap init(int openCreate){

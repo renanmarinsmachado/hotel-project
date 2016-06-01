@@ -27,8 +27,14 @@
 </head>
 <body>
 
-<div class="panel panel-default">
-	<div class="panel-body"><h1>Hotel Logatti</h1></div>
-</div>
+<c:set var="baseURL" value="${pageContext.request.contextPath}"/>
+<input type="hidden" id="baseURL" value="${baseURL}">
 
-<div class="panel-heading menu"><%@ include file="/WEB-INF/jsp/menu.jsp"%></div>
+<div id="wrapper" class="content">
+	<div id="header">
+			<div class="panel panel-default">
+				<div class="panel-body"><h1>Hotel Logatti</h1></div>
+			</div>
+			
+			<div class="panel-heading menu"><%@ include file="/WEB-INF/jsp/menu.jsp"%></div>
+	</div>

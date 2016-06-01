@@ -1,5 +1,5 @@
 
-<form:form role="form" method="post" action="http://localhost:8080/room.html" modelAttribute="room">
+<form:form role="form" method="post" action="${baseURL}/room.html" modelAttribute="room">
 	<input type="hidden" class="form-control" id="id" name="id" value="${room.id}">
 	<div class="form-group">
 		<div class="row">
@@ -35,13 +35,27 @@
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<div class="col-md-offset-10">
-				<button style="margin-right: 2px;" type="submit" class="btn btn-default">Salvar</button>
-			</div>
+			<c:choose>
+			    <c:when test="${room.id >= 0}">
+			    	<div class="col-md-offset-9">
+						<button style="margin-right: 2px;" type="submit" class="btn button-link">Salvar</button>
+						<a class="btn button-link" onclick="removeItem()">Exluir</a>
+			    	</div>
+			    </c:when>
+			    <c:otherwise>
+			    	<div class="col-md-offset-10">
+						<button style="margin-right: 2px;" type="submit" class="btn btn-default">Salvar</button>
+			    	</div>
+			    </c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </form:form>
 
-<form id="formEdit" method="post" action="http://localhost:8080/roomEdit">
+<form id="formEdit" method="post" action="${baseURL}/roomEdit">
 	<input type="hidden" id="idEdit" name="idEdit" />
+</form>
+
+<form id="formRemove" method="post" action="${baseURL}/roomRemove">
+	<input type="hidden" class="form-control" id="idRemove" name="idRemove" value="${room.id}">
 </form>
