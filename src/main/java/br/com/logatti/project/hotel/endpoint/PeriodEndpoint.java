@@ -29,7 +29,7 @@ public class PeriodEndpoint {
 	@RequestMapping(value = "/json", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
     public String findAllJson() {
-        List<Period> periods = periodService.findAll();
+        List<Period> periods = periodService.findByPaymentStatus(false);
         
         Gson gson = new Gson();
         return gson.toJson(periods);

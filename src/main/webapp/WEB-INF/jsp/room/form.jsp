@@ -1,5 +1,5 @@
 
-<form:form role="form" method="post" action="${baseURL}/room.html" modelAttribute="room">
+<form:form role="form" method="post" action="${baseURL}/room" modelAttribute="room">
 	<input type="hidden" class="form-control" id="id" name="id" value="${room.id}">
 	<div class="form-group">
 		<div class="row">

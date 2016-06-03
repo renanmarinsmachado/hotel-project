@@ -10,5 +10,7 @@ import br.com.logatti.project.hotel.entity.Period;
 public interface PeriodRepository extends CrudRepository<Period, Long>{
 
 	@Query("FROM Period p JOIN FETCH p.room")
-	public List<Period> findAllFetch();
+	List<Period> findAllFetch();
+	
+	List<Period> findByPaymentStatus(Boolean paymentStatus);
 }

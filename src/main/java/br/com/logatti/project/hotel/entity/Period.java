@@ -70,6 +70,14 @@ public class Period {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	@Override
 	public String toString() {
