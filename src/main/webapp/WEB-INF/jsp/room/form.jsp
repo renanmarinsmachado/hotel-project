@@ -39,7 +39,7 @@
 			    <c:when test="${room.id >= 0}">
 			    	<div class="col-md-offset-9">
 						<button style="margin-right: 2px;" type="submit" class="btn button-link">Salvar</button>
-						<a class="btn button-link" onclick="removeItem()">Exluir</a>
+						<a class="btn button-link" onclick="removeItem()">Excluir</a>
 			    	</div>
 			    </c:when>
 			    <c:otherwise>
