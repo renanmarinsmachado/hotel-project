@@ -1,4 +1,8 @@
 
+.modal {
+  top: 200px;
+}
+
 .panel-hotel{
 	width: 1000px;
 	height: auto;

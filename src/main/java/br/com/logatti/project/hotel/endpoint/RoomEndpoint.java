@@ -21,4 +21,9 @@ public class RoomEndpoint {
     public List<Room> findAll() {
         return (List<Room>) roomService.findAll();
     }
+	
+	@RequestMapping(value = "/available", method = RequestMethod.GET, produces = "application/json")
+    public List<Room> findByAvailable() {
+        return roomService.findByAvailable(true);
+    }
 }
