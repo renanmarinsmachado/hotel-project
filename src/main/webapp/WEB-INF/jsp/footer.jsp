@@ -17,7 +17,7 @@
 <!-- 				<div style="margin-right: 50px;"> -->
 					Desenvolvido por:
 <!-- 				</div>  -->
-				<br> Renan Marins Machado <br> Eitor Robinho
+				<br> Renan Marins Machado <br> Eitor Robson Marques
 			</div>
 </div>
 </div>
