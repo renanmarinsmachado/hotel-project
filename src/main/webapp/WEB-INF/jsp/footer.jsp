@@ -13,11 +13,12 @@
 <script src="${mainJs}"></script>
 
 <div id="footer">
-			<div class="footer">
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container" style="vertical-align: middle; padding-top: 15px;">
 <!-- 				<div style="margin-right: 50px;"> -->
-					Desenvolvido por:
+					<b>Desenvolvido por: Renan Marins Machado/Eitor Robson Marques</b>
 <!-- 				</div>  -->
-				<br> Renan Marins Machado <br> Eitor Robson Marques
+				</div>
 			</div>
 </div>
 </div>

@@ -46,6 +46,7 @@ public class ClientController {
 	
 	private ModelMap init(int openCreate){
 		ModelMap model = new ModelMap();
+		model.addAttribute("client", new Client());
         model.addAttribute("title", "Clientes");
         model.addAttribute("openCreate", openCreate);
         model.addAttribute("clients", clientService.findAll());

@@ -68,11 +68,13 @@ public class PeriodService {
 	public void saveMenuInPeriod(ItemMenuRoom itemMenuRoom){
 		AditionalPeriod aditionalPeriod = new AditionalPeriod();
 		
-		aditionalPeriod.setMenu(menuService.findById(itemMenuRoom.getIdItem()));
-		aditionalPeriod.setPeriod(this.findById(itemMenuRoom.getIdPeriod()));
-		aditionalPeriod.setQuantity(itemMenuRoom.getQtdItem());
-		
-		aditionalPeriodService.save(aditionalPeriod);
+		if(itemMenuRoom.getQtdItem() > 0){
+			aditionalPeriod.setMenu(menuService.findById(itemMenuRoom.getIdItem()));
+			aditionalPeriod.setPeriod(this.findById(itemMenuRoom.getIdPeriod()));
+			aditionalPeriod.setQuantity(itemMenuRoom.getQtdItem());
+			
+			aditionalPeriodService.save(aditionalPeriod);
+		}
 	}
 	
 	public List<AditionalPeriod> findItensMenu(Long idPeriod){

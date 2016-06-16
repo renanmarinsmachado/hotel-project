@@ -76,7 +76,7 @@
 	    	   	}else{
 	    	   		selected = "";
 	    	   	}
-	    	   	$('#roomType').append('<option value="'+data[i].id+'" '+selected+'>'+data[i].description+'</option>');
+	    	   	$('#roomType').append('<option value="'+data[i].id+'" '+selected+'>'+data[i].type+'</option>');
 	    	}
 	    });
 	});

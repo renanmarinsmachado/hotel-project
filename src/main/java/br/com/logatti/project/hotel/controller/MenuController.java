@@ -45,6 +45,7 @@ public class MenuController {
 	
 	private ModelMap init(int openCreate){
 		ModelMap model = new ModelMap();
+		model.addAttribute("menu", new Menu());
         model.addAttribute("title", "Cardápio");
         model.addAttribute("openCreate", openCreate);
         model.addAttribute("menus", menuService.findAll());

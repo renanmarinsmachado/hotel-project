@@ -50,6 +50,7 @@ public class RoomTypeController {
 	
 	private ModelMap init(int openCreate){
 		ModelMap model = new ModelMap();
+		model.addAttribute("roomType", new RoomType());
         model.addAttribute("title", "Tipos de quartos");
         model.addAttribute("openCreate", openCreate);
         model.addAttribute("roomtypes", roomTypeService.findAll());
