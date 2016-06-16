@@ -5,44 +5,49 @@
 <div id="modalProgress" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-        	<form id="formSaveMenu" method="post" class="form-inline" action="${baseURL}/hotelperiod/menu">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Adicionar Itens do Cardápio</h4>
                 </div>
 	                <div class="modal-body">
-	                    <div class="panel">
-							<div class="panel-heading"><h3>Cardápio</h3></div>
-							<div class="panel-body">
-									<div class="row">
-										<div class="col-md-6">
-											<label for="roomType">Itens:</label>
-<!-- 											<select class="form-control" name="menuSelect" id="menuSelect"> -->
-<!-- 												<option value="">Selecione</option> -->
-<!-- 											</select> -->
-											<div id="itens-menu"></div>
+						
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+						  <li role="presentation" class="active"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab">Cardápio</a></li>
+						  <li role="presentation"><a href="#finish-period" aria-controls="finish-period" role="tab" data-toggle="tab">Finalizar Estádia</a></li>
+						</ul>
+						
+						<!-- Tab panes -->
+						<div class="tab-content">
+						  <div role="tabpanel" class="tab-pane active" id="menu">
+						  	<div class="panel panel-menu">
+								<div class="panel-heading"><h3>Cardápio</h3></div>
+								<div class="panel-body">
+										<div class="row">
+											<div class="col-md-6">
+												<label for="roomType">Itens:</label>
+												<div id="itens-menu"></div>
+											</div>
+											<div class="col-md-6">
+												<a href="/menu">Cadastrar item no cardápio?</a>
+											</div>
 										</div>
-										<div class="col-md-6">
-											<a href="/menu">Cadastrar item no cardápio?</a>
-										</div>
-									</div>
-<!-- 									<div class="row"> -->
-<!-- 										<h3>Itens a adicionar:</h3></br> -->
-<!-- 										<div id="itens-menu-info"> -->
-										
-<!-- 										</div> -->
-<!-- 										<br/> -->
-<!-- 										<br/> -->
-<!-- 										<label id="totalMenu" value="0"></label> -->
-<!-- 									</div> -->
+								</div>
 							</div>
+							<div class="modal-footer">
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			                    <button type="button" id="btnItensMenu" class="btn btn-primary btnSavePeriod">Salvar</button>
+			                </div>
+						  </div>
+						  <div role="tabpanel" class="tab-pane" id="finish-period">
+						  	<div class="panel panel-finish-period">
+								<div class="panel-body">
+									<div class="modal-footer">
+					                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					                    <button type="submit" class="btn btn-primary btnSavePeriod">Finalizar Estádia</button>
+					                </div>
+								</div>
+							</div>
+						  </div>
 						</div>
-	                </div>
-	                <div class="modal-footer">
-	                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-	                    <button type="submit" class="btn btn-primary btnSavePeriod">Salvar</button>
-	                </div>
-                </form>
-           </div>
-       </div>
-</div>
+	               </div>

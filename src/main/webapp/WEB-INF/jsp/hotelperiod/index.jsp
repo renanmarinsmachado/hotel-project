@@ -95,19 +95,31 @@
 	    	var data = JSON.parse(dataStr);
 	       	for (i = 0; i < data.length; i++) {
 	       		$('#itens-menu').append('<div class="item-menu-add row"><input type="hidden" class="item-menu-id" value="'+data[i].id+'" /><div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].id+' - '+data[i].name+'</span> - R$ <span class="item-menu-price">'+data[i].value+'</span></label></div><div class="col-md-1"><input style="width:40px;" name="qtdItensAdd-'+data[i].id+'" type="number" class="qtd-itens-add" /></div></div>');
-	    	   	//$('#menuSelect').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
 	    	}
 	       	
-// 	       	$('.qtd-itens-add').change(function(){
-// 				var div = $(this).parent().parent();
-// 				var id = div.find('.item-menu-id').val();
-// 				var price = div.find('.item-menu-price').text();
-// 				var name = div.find('.item-menu-name').text();
-// 				var qtd = $(this).val();
-				
-// 				$('#totalMenu').text($('#totalMenu').text()+);
-// 				$('#itens-menu-info').append('<label>'+name+' - quantidade: '+qtd+' itens</label></br>');
-// 			});
+	       	$('#btnItensMenu').click(function(){
+	       		
+	       		var idRoom = $('#idRoom').val();
+	       		
+				$('#itens-menu').find('.item-menu-add').each( function( index, element ){
+				    var idItem = $( this ).find('.item-menu-id').val();
+				    var qtdItem = $( this ).find('.qtd-itens-add').val();
+				    
+				    var jsonData = JSON.parse('{"idRoom":'+idRoom+',"idItem":'+idItem+',"qtdItem":'+qtdItem+'}');
+				    
+				    $.ajax({
+				    	type: "POST",
+				    	url: $("#baseURL").val()+"/ed/hotelperiod/menu",
+				        contentType: "application/json",
+				        data : JSON.stringify(jsonData),
+						dataType : 'json',
+						timeout : 100000,
+				    }).then(function(data) {
+				    	alert(data);
+				    });
+				});
+			});
 	    });
+		
 	});
 </script>

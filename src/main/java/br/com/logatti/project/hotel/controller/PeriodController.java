@@ -25,7 +25,13 @@ public class PeriodController {
 	public ModelAndView save(@RequestParam("clientSelect") Long idClient, @RequestParam("idRoom") Long idRoom){
 		periodService.save(idClient, idRoom);
 		return new ModelAndView("hotelperiod/index", init());
-	}  
+	} 
+	
+	@RequestMapping(value="/hotelperiod/menu", method = RequestMethod.POST)
+	public ModelAndView save(ModelMap model){
+				
+		return new ModelAndView("hotelperiod/index", init());
+	} 
 	
 	private ModelMap init(){
 		ModelMap model = new ModelMap();
