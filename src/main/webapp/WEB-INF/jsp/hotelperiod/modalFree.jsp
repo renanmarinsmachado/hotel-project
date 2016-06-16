@@ -16,6 +16,7 @@
 							<div class="panel-body">
 									<div class="row">
 										<div class="col-md-6">
+											<input type="hidden" id="idRoomFree" name="idRoom" value=""/>
 											<label for="roomType">Selecionar Cliente:</label>
 											<select class="form-control" name="clientSelect" id="clientSelect">
 												<option value="">Selecione</option>

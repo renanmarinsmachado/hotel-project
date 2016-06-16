@@ -2,18 +2,18 @@ package br.com.logatti.project.hotel.endpoint.json;
 
 public class ItemMenuRoom {
 
-	private Long idRoom;
+	private Long idPeriod;
 	
 	private Long idItem;
 	
 	private Integer qtdItem;
 
-	public Long getIdRoom() {
-		return idRoom;
+	public Long getIdPeriod() {
+		return idPeriod;
 	}
 
-	public void setIdRoom(Long idRoom) {
-		this.idRoom = idRoom;
+	public void setIdPeriod(Long idPeriod) {
+		this.idPeriod = idPeriod;
 	}
 
 	public Long getIdItem() {

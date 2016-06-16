@@ -13,6 +13,13 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Period {
 
+	public Period() {
+	}
+	
+	public Period(Long id) {
+		this.id = id;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

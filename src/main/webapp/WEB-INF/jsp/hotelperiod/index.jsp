@@ -16,7 +16,6 @@
 					</div>
 				    <%@ include file="modalFree.jsp"%>
 				    <%@ include file="modalProgress.jsp"%>
-				    <input type="hidden" id="idRoom" name="idRoom" value=""/>
 				</div>
 			</div>
 		</div>
@@ -56,7 +55,7 @@
 		    	$('#period-content').html('');
 		    	var data = JSON.parse(dataStr);
 		    	for (i = 0; i < data.length; i++) { 
-		    	   	$('#period-content').append('<div style="cursor: pointer;" class="panel panel-default panel-period-progress"><input type="hidden" class="idRoom" value="'+data[i].id+'"><div class="row"><div class="col-md-3">Quarto: '+data[i].room.name+'</div><div class="col-md-3">Descrição: '+data[i].room.description+'</div><div class="col-md-3">Valor: '+data[i].room.diaryValue+'</div><div class="col-md-3">Tipo: '+data[i].room.roomType.description+'</div></div><hr><div class="row"><div class="col-md-3">Cliente: '+data[i].client.name+'</div><div class="col-md-3">Telefone: '+data[i].client.phone+'</div><div class="col-md-3">E-mail: '+data[i].client.email+'</div><div class="col-md-3">Data da entrada: '+data[i].entryDate+'</div></div></div>');
+		    	   	$('#period-content').append('<div style="cursor: pointer;" class="panel panel-default panel-period-progress"><input type="hidden" class="idPeriod" value="'+data[i].id+'"><div class="row"><div class="col-md-3">Quarto: '+data[i].room.name+'</div><div class="col-md-3">Descrição: '+data[i].room.description+'</div><div class="col-md-3">Valor: '+data[i].room.diaryValue+'</div><div class="col-md-3">Tipo: '+data[i].room.roomType.description+'</div></div><hr><div class="row"><div class="col-md-3">Cliente: '+data[i].client.name+'</div><div class="col-md-3">Telefone: '+data[i].client.phone+'</div><div class="col-md-3">E-mail: '+data[i].client.email+'</div><div class="col-md-3">Data da entrada: '+data[i].entryDate+'</div></div></div>');
 		    	}
 		    	
 		    	if(!data || data.length == 0){
@@ -68,15 +67,19 @@
 		$('#period-content').on('click', '.panel-period-free', function(e) {
 			var id = $(this).find('.idRoom').val();
 			
-			$('#idRoom').val(id);
+			$('#idRoomFree').val(id);
 			$('#btnModalFree').trigger( "click" );
 		});
 		
 		$('#period-content').on('click', '.panel-period-progress', function(e) {
-			var id = $(this).find('.idRoom').val();
+			var id = $(this).find('.idPeriod').val();
 			
-			$('#idRoom').val(id);
+			$('#idPeriod').val(id);
+			$('#idPeriodFinish').val(id);
 			$('#btnModalProgress').trigger( "click" );
+			
+			fillFinishedPeriod(id);
+			
 		});
 		
 		$.ajax({
@@ -90,22 +93,18 @@
 		
 		$.ajax({
 	        url: $("#baseURL").val()+"/ed/menu"
-	    }).then(function(dataStr) {
-	    	var selected = "";
-	    	var data = JSON.parse(dataStr);
-	       	for (i = 0; i < data.length; i++) {
-	       		$('#itens-menu').append('<div class="item-menu-add row"><input type="hidden" class="item-menu-id" value="'+data[i].id+'" /><div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].id+' - '+data[i].name+'</span> - R$ <span class="item-menu-price">'+data[i].value+'</span></label></div><div class="col-md-1"><input style="width:40px;" name="qtdItensAdd-'+data[i].id+'" type="number" class="qtd-itens-add" /></div></div>');
-	    	}
+	    }).then(function(data) {
+	    	fillItensMenu(data);
 	       	
 	       	$('#btnItensMenu').click(function(){
 	       		
-	       		var idRoom = $('#idRoom').val();
+	       		var idPeriod = $('#idPeriod').val();
 	       		
 				$('#itens-menu').find('.item-menu-add').each( function( index, element ){
 				    var idItem = $( this ).find('.item-menu-id').val();
 				    var qtdItem = $( this ).find('.qtd-itens-add').val();
 				    
-				    var jsonData = JSON.parse('{"idRoom":'+idRoom+',"idItem":'+idItem+',"qtdItem":'+qtdItem+'}');
+				    var jsonData = JSON.parse('{"idPeriod":'+idPeriod+',"idItem":'+idItem+',"qtdItem":'+qtdItem+'}');
 				    
 				    $.ajax({
 				    	type: "POST",
@@ -114,12 +113,35 @@
 				        data : JSON.stringify(jsonData),
 						dataType : 'json',
 						timeout : 100000,
+						async: false
 				    }).then(function(data) {
-				    	alert(data);
+				    	
 				    });
 				});
+				
+				alert('Itens salvos com sucesso!');
+				fillItensMenu(data);
+				fillFinishedPeriod(idPeriod);
+				
 			});
 	    });
 		
+		function fillItensMenu(data){
+			$('#itens-menu').html('');
+			for (i = 0; i < data.length; i++) {
+	       		$('#itens-menu').append('<div class="item-menu-add row"><input type="hidden" class="item-menu-id" value="'+data[i].id+'" /><div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].id+' - '+data[i].name+'</span> - R$ <span class="item-menu-price">'+data[i].value+'</span></label></div><div class="col-md-1"><input style="width:40px;" name="qtdItensAdd-'+data[i].id+'" type="number" class="qtd-itens-add" value="0" /></div></div>');
+	    	}
+		}
+		
+		function fillFinishedPeriod(id){
+			$.ajax({
+		        url: $("#baseURL").val()+"/ed/hotelperiod/"+id+"/menu"
+		    }).then(function(data) {
+		    	$('#itens-menu-added').html('');
+				for (i = 0; i < data.length; i++) {
+		       		$('#itens-menu-added').append('<div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].menu.name+'</span> - Total: '+data[i].quantity+' X R$ <span class="item-menu-price">'+(data[i].menu.value*data[i].quantity)+'</span></label></div>');
+		    	}	    	
+		    });
+		}
 	});
 </script>

@@ -21,6 +21,7 @@
 						<div class="tab-content">
 						  <div role="tabpanel" class="tab-pane active" id="menu">
 						  	<div class="panel panel-menu">
+						  		<input type="hidden" id="idPeriod" name="idPeriod" value=""/>
 								<div class="panel-heading"><h3>Cardápio</h3></div>
 								<div class="panel-body">
 										<div class="row">
@@ -43,8 +44,18 @@
 						  	<div class="panel panel-finish-period">
 								<div class="panel-body">
 									<div class="modal-footer">
-					                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					                    <button type="submit" class="btn btn-primary btnSavePeriod">Finalizar Estádia</button>
+										<form id="formSavePeriod" method="post" class="form-inline" action="${baseURL}/hotelperiodFinish">
+											<div class="row">
+												<div class="col-md-12">
+													<div id="itens-menu-added"></div>
+												</div>
+												<div class="col-md-12">
+													<input type="hidden" id="idPeriodFinish" name="idPeriodFinish" value=""/>
+								                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+								                    <button type="submit" class="btn btn-primary btnSavePeriod">Finalizar Estádia</button>
+												</div>
+											</div>
+					                    </form>
 					                </div>
 								</div>
 							</div>

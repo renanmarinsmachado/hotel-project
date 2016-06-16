@@ -8,6 +8,14 @@ import javax.persistence.Id;
 @Entity
 public class Menu {
 
+	public Menu() {
+		
+	}
+	
+	public Menu(Long id) {
+		this.id = id;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

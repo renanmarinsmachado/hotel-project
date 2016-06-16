@@ -33,6 +33,14 @@ public class PeriodController {
 		return new ModelAndView("hotelperiod/index", init());
 	} 
 	
+	@RequestMapping(value="/hotelperiodFinish", method = RequestMethod.POST)
+	public ModelAndView finishPeriod(@RequestParam("idPeriodFinish") Long idPeriod){
+		
+		periodService.finishPeriod(idPeriod);
+		
+		return new ModelAndView("/hotelperiod/index", init());
+	} 
+	
 	private ModelMap init(){
 		ModelMap model = new ModelMap();
         model.addAttribute("title", "Estádias");

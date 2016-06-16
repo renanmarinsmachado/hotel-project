@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.logatti.project.hotel.endpoint.json.ItemMenuRoom;
+import br.com.logatti.project.hotel.entity.AditionalPeriod;
 import br.com.logatti.project.hotel.entity.Period;
 import br.com.logatti.project.hotel.entity.Room;
 import br.com.logatti.project.hotel.repository.PeriodRepository;
@@ -23,12 +25,22 @@ public class PeriodService {
 	@Autowired
 	private RoomService roomService;
 	
+	@Autowired
+	private MenuService menuService;
+		
+	@Autowired
+	private AditionalPeriodService aditionalPeriodService;
+	
 	public List<Period> findAll(){
 		return periodRepository.findAllFetch();
 	}
 	
 	public List<Period> findByPaymentStatus(Boolean paymentStatus){
 		return periodRepository.findByPaymentStatus(paymentStatus);
+	}
+	
+	public Period findById(Long id){
+		return periodRepository.findOne(id);
 	}
 	
 	public void save(Long idClient, Long idRoom){
@@ -46,6 +58,34 @@ public class PeriodService {
 		
 		Room room = roomService.findById(idRoom);
 		room.setAvailable(false);
+		roomService.save(room);
+	}
+	
+	public void save(Period period){
+		periodRepository.save(period);
+	}
+	
+	public void saveMenuInPeriod(ItemMenuRoom itemMenuRoom){
+		AditionalPeriod aditionalPeriod = new AditionalPeriod();
+		
+		aditionalPeriod.setMenu(menuService.findById(itemMenuRoom.getIdItem()));
+		aditionalPeriod.setPeriod(this.findById(itemMenuRoom.getIdPeriod()));
+		aditionalPeriod.setQuantity(itemMenuRoom.getQtdItem());
+		
+		aditionalPeriodService.save(aditionalPeriod);
+	}
+	
+	public List<AditionalPeriod> findItensMenu(Long idPeriod){
+		return aditionalPeriodService.findAllPeriod(idPeriod);
+	}
+	
+	public void finishPeriod(Long idPeriod){
+		Period period = this.findById(idPeriod);
+		period.setPaymentStatus(true);
+		this.save(period);
+		
+		Room room = roomService.findById(period.getRoom().getId());
+		room.setAvailable(true);
 		roomService.save(room);
 	}
 }
