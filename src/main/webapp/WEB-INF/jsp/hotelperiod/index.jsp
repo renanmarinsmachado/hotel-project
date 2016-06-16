@@ -138,9 +138,13 @@
 		        url: $("#baseURL").val()+"/ed/hotelperiod/"+id+"/menu"
 		    }).then(function(data) {
 		    	$('#itens-menu-added').html('');
+		    	var totalFinal = 0;
 				for (i = 0; i < data.length; i++) {
-		       		$('#itens-menu-added').append('<div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].menu.name+'</span> - Total: '+data[i].quantity+' X R$ <span class="item-menu-price">'+(data[i].menu.value*data[i].quantity)+'</span></label></div>');
-		    	}	    	
+					var total = (data[i].menu.value*data[i].quantity);
+					totalFinal=totalFinal+total;
+		       		$('#itens-menu-added').append('<div class="col-md-8"><label class"item-menu-label"><span class="item-menu-name">'+data[i].menu.name+'</span> - Total: '+data[i].quantity+' X R$ <span class="item-menu-price">'+total+'</span></label></div>');
+		    	}
+				$('.totalFinal').html('Total Final: R$ '+totalFinal.toFixed(2));
 		    });
 		}
 	});

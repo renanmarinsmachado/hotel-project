@@ -24,10 +24,13 @@
 								<div class="panel-heading"><h3>Cardápio</h3></div>
 								<div class="panel-body">
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-12">
 												<label for="roomType">Itens:</label>
 												<div id="itens-menu"></div>
 											</div>
+										</div>
+										<br>
+										<div class="row">
 											<div class="col-md-6">
 												<a href="/menu">Cadastrar item no cardápio?</a>
 											</div>
@@ -48,7 +51,13 @@
 												<div class="col-md-12">
 													<div id="itens-menu-added"></div>
 												</div>
-												<div class="col-md-12">
+											</div>
+											<br>
+											<div class="row">
+												<div class="col-md-4">
+													<b><span class="totalFinal"></span></b>
+												</div>
+												<div class="col-md-8">
 													<input type="hidden" id="idPeriodFinish" name="idPeriodFinish" value=""/>
 								                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 								                    <button type="submit" class="btn btn-primary btnSavePeriod">Finalizar Estádia</button>

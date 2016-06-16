@@ -12,7 +12,7 @@
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-3">
-				<label for="diaryValue">Valor:</label> <input type="number"
+				<label for="diaryValue">Valor:</label> <input type="number" step="any"
 					class="form-control" id="value" name="value" value="${menu.value}">
 			</div>
 		</div>
