@@ -17,4 +17,20 @@ public class MenuService {
 	public List<Menu> findAll(){
 		return (List<Menu>) menuRepository.findAll();
 	}
+	
+	public Menu findById(Long id){
+		return menuRepository.findOne(id);
+	}
+	
+	public void save(Menu menu){
+		menuRepository.save(menu);
+	}
+	
+	public Menu get(Long id){
+		return menuRepository.findOne(id);
+	}
+	
+	public void remove(Long id) {
+		menuRepository.delete(id);
+	}
 }

@@ -9,50 +9,46 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.logatti.project.hotel.entity.RoomType;
-import br.com.logatti.project.hotel.service.RoomTypeService;
+import br.com.logatti.project.hotel.entity.Client;
+import br.com.logatti.project.hotel.service.ClientService;
 
 @Controller
-public class RoomTypeController {
+public class ClientController {
 
 	@Autowired
-	private RoomTypeService roomTypeService;
+	private ClientService clientService;
 	
-	@RequestMapping(value="/roomtype", method = RequestMethod.GET)
+	@RequestMapping(value="/client", method = RequestMethod.GET)
     public ModelAndView getList() {
-        return new ModelAndView("roomtype/index", init(0));
+        return new ModelAndView("client/index", init(0));
     }
 	
-	@RequestMapping(value="/roomtype", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("roomtype") RoomType roomtype) {
+	@RequestMapping(value="/client", method = RequestMethod.POST)
+    public ModelAndView save(@ModelAttribute("client") Client client) {
 		
-//		if(roomtype.getId() == null){
-//			roomtype.setAvailable(true);
-//		}
-		
-		roomTypeService.save(roomtype);
+		clientService.save(client);
 		
         return getList();
     }
 	
-	@RequestMapping(value="/roomTypeEdit", method = RequestMethod.POST)
+	@RequestMapping(value="/clientEdit", method = RequestMethod.POST)
     public ModelAndView getToEdit(@RequestParam("idEdit") Long id) {
 		ModelMap model = init(1);
-		model.addAttribute("roomType", roomTypeService.get(id));
-        return new ModelAndView("roomtype/index", model);		
+		model.addAttribute("client", clientService.get(id));
+        return new ModelAndView("client/index", model);		
     }
 	
-	@RequestMapping(value="/roomTypeRemove", method = RequestMethod.POST)
+	@RequestMapping(value="/clientRemove", method = RequestMethod.POST)
     public ModelAndView remove(@RequestParam("idRemove") Long id) {
-		roomTypeService.remove(id);
+		clientService.remove(id);
         return getList();		
     }
 	
 	private ModelMap init(int openCreate){
 		ModelMap model = new ModelMap();
-        model.addAttribute("title", "Tipos de quartos");
+        model.addAttribute("title", "Clientes");
         model.addAttribute("openCreate", openCreate);
-        model.addAttribute("roomtypes", roomTypeService.findAll());
+        model.addAttribute("clients", clientService.findAll());
         return model;
 	}
 }

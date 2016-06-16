@@ -4,18 +4,14 @@
 		<tr>
 			<th>ID</th>
 			<th>Nome</th>
-			<th>R$ Diária</th>
-			<th>Tipo de quarto</th>
-			<th>Descrição</th>
+			<th>Valor</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
 			<th>ID</th>
 			<th>Nome</th>
-			<th>R$ Diária</th>
-			<th>Tipo de quarto</th>
-			<th>Descrição</th>
+			<th>Valor</th>
 		</tr>
 	</tfoot>
 </table>

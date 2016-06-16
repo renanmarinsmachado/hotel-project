@@ -32,9 +32,9 @@
 
 <div id="wrapper" class="content">
 	<div id="header">
-			<div class="panel panel-default">
-				<div class="panel-body"><h1>Hotel Logatti</h1></div>
-			</div>
+<!-- 			<div class="panel panel-default"> -->
+<!-- 				<div class="panel-body"><h3>Hotel Logatti</h3></div> -->
+<!-- 			</div> -->
 			
 			<div class="panel-heading menu"><%@ include file="/WEB-INF/jsp/menu.jsp"%></div>
 	</div>

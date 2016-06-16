@@ -9,50 +9,45 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.logatti.project.hotel.entity.RoomType;
-import br.com.logatti.project.hotel.service.RoomTypeService;
+import br.com.logatti.project.hotel.entity.Menu;
+import br.com.logatti.project.hotel.service.MenuService;
 
 @Controller
-public class RoomTypeController {
+public class MenuController {
 
 	@Autowired
-	private RoomTypeService roomTypeService;
+	private MenuService menuService;
 	
-	@RequestMapping(value="/roomtype", method = RequestMethod.GET)
+	@RequestMapping(value="/menu", method = RequestMethod.GET)
     public ModelAndView getList() {
-        return new ModelAndView("roomtype/index", init(0));
+        return new ModelAndView("cardapio/index", init(0));
     }
 	
-	@RequestMapping(value="/roomtype", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("roomtype") RoomType roomtype) {
-		
-//		if(roomtype.getId() == null){
-//			roomtype.setAvailable(true);
-//		}
-		
-		roomTypeService.save(roomtype);
+	@RequestMapping(value="/menu", method = RequestMethod.POST)
+    public ModelAndView save(@ModelAttribute("menu") Menu menu) {
+		menuService.save(menu);
 		
         return getList();
     }
 	
-	@RequestMapping(value="/roomTypeEdit", method = RequestMethod.POST)
+	@RequestMapping(value="/menuEdit", method = RequestMethod.POST)
     public ModelAndView getToEdit(@RequestParam("idEdit") Long id) {
 		ModelMap model = init(1);
-		model.addAttribute("roomType", roomTypeService.get(id));
-        return new ModelAndView("roomtype/index", model);		
+		model.addAttribute("menu", menuService.get(id));
+        return new ModelAndView("cardapio/index", model);		
     }
 	
-	@RequestMapping(value="/roomTypeRemove", method = RequestMethod.POST)
+	@RequestMapping(value="/menuRemove", method = RequestMethod.POST)
     public ModelAndView remove(@RequestParam("idRemove") Long id) {
-		roomTypeService.remove(id);
+		menuService.remove(id);
         return getList();		
     }
 	
 	private ModelMap init(int openCreate){
 		ModelMap model = new ModelMap();
-        model.addAttribute("title", "Tipos de quartos");
+        model.addAttribute("title", "Cardápio");
         model.addAttribute("openCreate", openCreate);
-        model.addAttribute("roomtypes", roomTypeService.findAll());
+        model.addAttribute("menus", menuService.findAll());
         return model;
 	}
 }

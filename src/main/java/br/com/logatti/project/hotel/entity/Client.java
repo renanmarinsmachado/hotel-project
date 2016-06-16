@@ -20,6 +20,14 @@ public class Client {
 	
 	private String email;
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public Long getId() {
 		return id;
 	}

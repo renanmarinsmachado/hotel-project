@@ -4,18 +4,18 @@
 		<tr>
 			<th>ID</th>
 			<th>Nome</th>
-			<th>R$ Diária</th>
-			<th>Tipo de quarto</th>
-			<th>Descrição</th>
+			<th>Endereço</th>
+			<th>Telefone</th>
+			<th>E-mail</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
 			<th>ID</th>
 			<th>Nome</th>
-			<th>R$ Diária</th>
-			<th>Tipo de quarto</th>
-			<th>Descrição</th>
+			<th>Endereço</th>
+			<th>Telefone</th>
+			<th>E-mail</th>
 		</tr>
 	</tfoot>
 </table>

@@ -15,6 +15,15 @@ public class Menu {
 	private String name;
 	
 	private Double value;
+	
+	
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
+	}
 
 	public Long getId() {
 		return id;

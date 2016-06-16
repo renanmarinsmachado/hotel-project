@@ -37,6 +37,6 @@
 	<input type="hidden" id="idEdit" name="idEdit" />
 </form>
 
-<form id="formRemove" method="post" action="${baseURL}/roomRemove">
-	<input type="hidden" class="form-control" id="idRemove" name="idRemove" value="${room.id}">
+<form id="formRemove" method="post" action="${baseURL}/roomTypeRemove">
+	<input type="hidden" class="form-control" id="idRemove" name="idRemove" value="${roomType.id}">
 </form>
