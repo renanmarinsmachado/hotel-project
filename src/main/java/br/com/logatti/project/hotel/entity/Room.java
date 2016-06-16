@@ -12,18 +12,14 @@ public class Room {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	private String name;
-	
 	private String description;
 	
 	@ManyToOne
 	private RoomType roomType;
-	
 	private Double diaryValue;
-	
 	private Boolean available;
-
+	
 	public Long getId() {
 		return id;
 	}

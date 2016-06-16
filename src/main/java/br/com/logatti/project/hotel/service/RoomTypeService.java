@@ -15,4 +15,20 @@ public class RoomTypeService {
 	public Iterable<RoomType> findAll(){
 		return roomTypeRepository.findAll();
 	}
+	
+	public RoomType findById(Long id){
+		return roomTypeRepository.findOne(id);
+	}
+	
+	public void save(RoomType roomtype){
+		roomTypeRepository.save(roomtype);
+	}
+	
+	public RoomType get(Long id){
+		return roomTypeRepository.findOne(id);
+	}
+	
+	public void remove(Long id) {
+		roomTypeRepository.delete(id);
+	}
 }

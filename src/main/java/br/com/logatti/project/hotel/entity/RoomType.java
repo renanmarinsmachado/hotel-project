@@ -11,9 +11,7 @@ public class RoomType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	private String type;
-	
 	private String description;
 
 	public Long getId() {
@@ -30,6 +28,14 @@ public class RoomType {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override

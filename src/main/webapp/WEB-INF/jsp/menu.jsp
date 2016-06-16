@@ -8,7 +8,7 @@
 				data-toggle="dropdown" href="#">Cadastros <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/room">Quartos</a></li>
-					<li><a href="#">Tipos de Quartos</a></li>
+					<li><a href="/roomtype">Tipos de Quartos</a></li>
 					<li><a href="#">Clientes</a></li>
 					<li><a href="#">Itens Cardápio</a></li>
 				</ul></li>

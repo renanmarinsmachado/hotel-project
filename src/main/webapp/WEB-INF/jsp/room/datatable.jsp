@@ -4,18 +4,18 @@
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
-			<th>Description</th>
-			<th>Room Type</th>
 			<th>Diary Value</th>
+			<th>Room Type</th>
+			<th>Description</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
-			<th>Description</th>
-			<th>Room Type</th>
 			<th>Diary Value</th>
+			<th>Room Type</th>
+			<th>Description</th>
 		</tr>
 	</tfoot>
 </table>
