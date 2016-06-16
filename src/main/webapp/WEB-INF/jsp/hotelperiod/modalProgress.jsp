@@ -60,7 +60,7 @@
 												<div class="col-md-8">
 													<input type="hidden" id="idPeriodFinish" name="idPeriodFinish" value=""/>
 								                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-								                    <button type="submit" class="btn btn-primary btnSavePeriod">Finalizar Estádia</button>
+								                    <button type="submit" class="btn btn-primary btnFinishPeriod">Finalizar Estádia</button>
 												</div>
 											</div>
 					                    </form>

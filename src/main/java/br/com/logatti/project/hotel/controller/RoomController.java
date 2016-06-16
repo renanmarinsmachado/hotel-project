@@ -28,9 +28,10 @@ public class RoomController {
 		
 		if(room.getId() == null){
 			room.setAvailable(true);
+		}else{
+			Room roomSaved = roomService.findById(room.getId());
+			room.setAvailable(roomSaved.isAvailable());
 		}
-		Room roomSaved = roomService.findById(room.getId());
-		room.setAvailable(roomSaved.isAvailable());
 		roomService.save(room);
 		
         return getList();

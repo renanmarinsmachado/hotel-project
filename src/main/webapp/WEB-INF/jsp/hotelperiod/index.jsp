@@ -126,6 +126,10 @@
 			});
 	    });
 		
+		$('.btnFinishPeriod').click(function(){
+			return confirm('Tem certeza que seja finalizar?');
+		});
+		
 		function fillItensMenu(data){
 			$('#itens-menu').html('');
 			for (i = 0; i < data.length; i++) {
